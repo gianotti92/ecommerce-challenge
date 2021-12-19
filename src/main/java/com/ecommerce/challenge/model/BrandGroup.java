@@ -2,6 +2,7 @@ package com.ecommerce.challenge.model;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "brand_group")
 public class BrandGroup {
     @Id

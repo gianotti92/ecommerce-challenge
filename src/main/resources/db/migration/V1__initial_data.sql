@@ -5,7 +5,8 @@ create table brand_group (
 );
 
 create table prices (
-     price_list int not null primary key,
+     id int not null primary key,
+     price_list int,
      brand_id int not null,
      start_date timestamp,
      end_date timestamp,
@@ -23,9 +24,9 @@ values
 
 
 insert into prices
-(price_list, brand_id, start_date, end_date, product_id, priority, price, currency)
+(id, price_list, brand_id, start_date, end_date, product_id, priority, price, currency)
 values
-(1, 1, '2020-06-14 00:00:00', '2020-12-31 23:59:59', 35455, 0, 35.50, 'EUR'),
-(2, 1, '2020-06-14 15:00:00', '2020-06-14 18:30:00', 35455, 1, 25.45, 'EUR'),
-(3, 1, '2020-06-15 00:00:00', '2020-06-15 11:00:00', 35455, 1, 30.50, 'EUR'),
-(4, 1, '2020-06-15 16:00:00', '2020-12-31 23:59:59', 35455, 1, 38.95, 'EUR');
+(1, 1, 1, '2020-06-14 00:00:00', '2020-12-31 23:59:59', 35455, 0, 35.50, 'EUR'),
+(2, 2, 1, '2020-06-14 15:00:00', '2020-06-14 18:30:00', 35455, 1, 25.45, 'EUR'),
+(3, 3, 1, '2020-06-15 00:00:00', '2020-06-15 11:00:00', 35455, 1, 30.50, 'EUR'),
+(4, 4, 1, '2020-06-15 16:00:00', '2020-12-31 23:59:59', 35455, 1, 38.95, 'EUR');
