@@ -7,4 +7,8 @@ public class EcommerceException extends RuntimeException{
         super(message);
         this.ecommerceError = ecommerceError;
     }
+
+    public EcommerceError getEcommerceError() {
+        return ecommerceError;
+    }
 }
