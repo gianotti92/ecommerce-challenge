@@ -15,7 +15,7 @@ public class Price {
     private Integer priceList;
     @ManyToOne(targetEntity = BrandGroup.class)
     @JoinColumn(name = "brand_id")
-    private Long brandId;
+    private BrandGroup brandGroup;
     @Column(name = "start_date")
     private LocalDateTime startDate;
     @Column(name = "end_date")
@@ -30,6 +30,9 @@ public class Price {
     @Column(name = "currency")
     private Currency currency;
 
+    public Price() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -38,8 +41,8 @@ public class Price {
         return priceList;
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public BrandGroup getBrandGroup() {
+        return brandGroup;
     }
 
     public LocalDateTime getStartDate() {
@@ -73,7 +76,7 @@ public class Price {
     public static final class PriceBuilder {
         private Long id;
         private Integer priceList;
-        private Long brandId;
+        private BrandGroup brandGroup;
         private LocalDateTime startDate;
         private LocalDateTime endDate;
         private Long productId;
@@ -83,7 +86,6 @@ public class Price {
 
         private PriceBuilder() {
         }
-
 
         public PriceBuilder withId(Long id) {
             this.id = id;
@@ -95,8 +97,8 @@ public class Price {
             return this;
         }
 
-        public PriceBuilder withBrandId(Long brandId) {
-            this.brandId = brandId;
+        public PriceBuilder withBrandGroup(BrandGroup brandGroup) {
+            this.brandGroup = brandGroup;
             return this;
         }
 
@@ -139,7 +141,7 @@ public class Price {
             price.currency = this.currency;
             price.productId = this.productId;
             price.priceList = this.priceList;
-            price.brandId = this.brandId;
+            price.brandGroup = this.brandGroup;
             price.priority = this.priority;
             return price;
         }

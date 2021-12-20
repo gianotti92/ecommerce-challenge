@@ -17,6 +17,6 @@ public class PriceService {
     }
 
     public List<Price> findProductPricesBy(LocalDateTime startDate, Long productCode, Long brandGroupId){
-        return priceRepository.findPricesByStartDateOrProductIdOrBrandId(startDate, productCode, brandGroupId);
+        return priceRepository.findProductPricesBy(startDate, productCode, brandGroupId);
     }
 }

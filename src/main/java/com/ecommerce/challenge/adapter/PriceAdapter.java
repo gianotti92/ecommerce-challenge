@@ -1,11 +1,16 @@
 package com.ecommerce.challenge.adapter;
 
 import com.ecommerce.challenge.dto.ProductPriceDto;
+import com.ecommerce.challenge.exception.EcommerceError;
+import com.ecommerce.challenge.exception.EcommerceException;
 import com.ecommerce.challenge.service.PriceService;
 import com.ecommerce.challenge.translator.PriceTranslator;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,8 +24,19 @@ public class PriceAdapter {
         this.priceTranslator = priceTranslator;
     }
 
-    public List<ProductPriceDto> findProductPricesBy(LocalDateTime startDate, Long productCode, Long brandGroupId) {
-        return priceService.findProductPricesBy(startDate, productCode, brandGroupId).stream()
+    public List<ProductPriceDto> findProductPricesBy(String startDate, Long productCode, Long brandGroupId) {
+        LocalDateTime startLocalDateTime = null;
+
+        if(Strings.EMPTY.equals(startDate)) {
+            throw new EcommerceException("invalid query param", EcommerceError.GENERIC_ERROR);
+        }
+
+        if(Strings.isNotBlank(startDate)) {
+            startLocalDateTime = LocalDateTime.parse(startDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        }
+
+
+        return priceService.findProductPricesBy(startLocalDateTime, productCode, brandGroupId).stream()
                 .map(priceTranslator::toDto)
                 .collect(Collectors.toList());
     }

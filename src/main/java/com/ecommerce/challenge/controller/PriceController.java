@@ -21,9 +21,9 @@ public class PriceController {
     }
 
     @GetMapping
-    public List<ProductPriceDto> findProductPricesBy(@RequestParam(required = false) LocalDateTime startDate
-            ,@RequestParam(required = false) Long productCode
-            ,@RequestParam(required = false) Long brandGroupId) {
+    public List<ProductPriceDto> findProductPricesBy(@RequestParam(required = false) String startDate,
+                                                     @RequestParam(required = false) Long productCode,
+                                                     @RequestParam(required = false) Long brandGroupId) {
 
         return priceAdapter.findProductPricesBy(startDate, productCode, brandGroupId);
     }

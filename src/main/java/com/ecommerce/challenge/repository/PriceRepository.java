@@ -13,10 +13,13 @@ import java.util.List;
 @Repository
 public interface PriceRepository extends JpaRepository<Price, Long> {
 
-    @Query("select p from Price p where (p.startDate = :startDate or p.startDate is null)" +
-            "and (p.productId = :productCode or p.productId is null)" +
-            "and (p.brandId = :brandGroupId or p.brandId is null)")
-    List<Price> findPricesByStartDateOrProductIdOrBrandId(@Param("startDate") LocalDateTime startDate,
-                                                          @Param("productCode")Long productCode,
-                                                          @Param("brandGroupId")Long brandGroupId);
+    @Query("select p from Price p where (p.startDate = :startDate or :startDate is null)" +
+            "or p.productId = :productCode or p.brandGroup.id = :brandGroupId")
+    List<Price> findProductPricesBy(@Param("startDate") LocalDateTime startDate,
+                                    @Param("productCode") Long productCode,
+                                    @Param("brandGroupId") Long brandGroupId);
+
+
+
+    List<Price> findPricesByStartDateOrProductIdOrBrandGroup(LocalDateTime startDate, Long productCode, Long brandGroupId);
 }

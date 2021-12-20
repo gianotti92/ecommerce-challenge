@@ -10,7 +10,7 @@ public class PriceTranslator {
     public ProductPriceDto toDto(Price price) {
         return ProductPriceDto.newProductPriceDtoBuilder()
                 .withProductCode(price.getProductId())
-                .withBrandGroupCode(price.getBrandId())
+                .withBrandGroupCode(price.getBrandGroup().getId())
                 .withRate(price.getPriceList())
                 .withStartDate(price.getStartDate())
                 .withEndDate(price.getEndDate())

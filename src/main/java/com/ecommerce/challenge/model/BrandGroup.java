@@ -13,6 +13,9 @@ public class BrandGroup {
     @Column(name = "description")
     private String description;
 
+    public BrandGroup() {
+    }
+
     public Long getId() {
         return id;
     }
