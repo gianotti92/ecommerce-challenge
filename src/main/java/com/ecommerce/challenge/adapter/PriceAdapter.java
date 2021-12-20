@@ -7,7 +7,7 @@ import com.ecommerce.challenge.service.PriceService;
 import com.ecommerce.challenge.translator.PriceTranslator;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
