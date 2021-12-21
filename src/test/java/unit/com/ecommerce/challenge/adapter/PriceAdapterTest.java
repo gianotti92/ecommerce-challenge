@@ -47,7 +47,7 @@ public class PriceAdapterTest {
     @Test
     public void findProductPricesByOK() {
         String startDate = "2020-06-14T00:00:00";
-        
+
         when(priceService.findProductPricesBy(LocalDateTime.parse(startDate, DateTimeFormatter.ISO_LOCAL_DATE_TIME), PRODUCT_CODE, BRAND_GROUP_ID))
         .thenReturn(List.of(Price.newBuilder().withPrice(new BigDecimal(25.5)).build()));
         when(priceTranslator.toDto(any())).thenReturn(ProductPriceDto.newProductPriceDtoBuilder().build());

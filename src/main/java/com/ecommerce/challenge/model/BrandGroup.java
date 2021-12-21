@@ -28,6 +28,10 @@ public class BrandGroup {
         return description;
     }
 
+    public static BrandGroup.BrandGroupBuilder newBuilder() {
+        return new BrandGroup.BrandGroupBuilder();
+    }
+
     public static final class BrandGroupBuilder {
         private Long id;
         private String name;
